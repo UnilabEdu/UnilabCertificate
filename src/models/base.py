@@ -1,7 +1,8 @@
 from src.extensions import db
+from flask_login import UserMixin
 
 
-class BaseModel(db.Model):
+class BaseModel(db.Model,UserMixin):
 
     __abstract__ = True
 

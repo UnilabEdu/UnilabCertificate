@@ -3,6 +3,7 @@ from src.config import Config
 from src.extensions import db
 from src.api import api
 from src.commands import init_db
+from src.extensions import login_manager
 
 def create_app():
     app = Flask(__name__)
@@ -22,6 +23,8 @@ def reg_ext(app):
 
     # Flask-restful
     api.init_app(app)
+
+    login_manager.init_app(app)
 
 
 def reg_commands(app):
