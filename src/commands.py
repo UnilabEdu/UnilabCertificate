@@ -10,7 +10,7 @@ from src.extensions import db
 @click.command("api_test")
 @with_appcontext
 def api_test():
-    link = "http://127.0.0.1:5000/api/register"
+    link = "http://127.0.0.1:5000/api/login"
     headers = {"Content-Type": "application/json"}
     body = {"name": "oto", "password": "oto"}
     received_response = requests.post(link, data=json.dumps(body), headers=headers)

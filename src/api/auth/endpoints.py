@@ -2,6 +2,8 @@ from src.models import User
 
 from flask_restful import Resource, reqparse
 
+from flask_jwt_extended import create_access_token
+
 
 # For test!
 class AuthApi(Resource):
@@ -45,4 +47,21 @@ class RegisterApi(Resource):
 
 
 class LoginApi(Resource):
-    pass
+    parser = reqparse.RequestParser()
+    parser.add_argument("name",
+                        required=True,
+                        type=str)
+    parser.add_argument("password",
+                        required=True,
+                        type=str)
+
+    def post(self):
+        received_args = self.parser.parse_args()
+        user = User.query.filter(User.name == received_args["name"]).first()
+        if not user:
+            return "User not found! ", 404
+        if user and user.password == received_args["password"]:
+            token = create_access_token(identity=user.id)
+            return token, 200
+        else:
+            return "Wrong password!", 400
