@@ -12,7 +12,7 @@ from src.extensions import db
 def api_test():
     link = "http://127.0.0.1:5000/api/login"
     headers = {"Content-Type": "application/json"}
-    body = {"name": "oto", "password": "oto"}
+    body = {"name": 'oto', "password": 'oto'}
     received_response = requests.post(link, data=json.dumps(body), headers=headers)
     print(received_response.content)
 
