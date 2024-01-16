@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token
 # For test!
 class AuthApi(Resource):
     parser = reqparse.RequestParser()
-    parser.add_argument("name",
+    parser.add_argument("username",
                         type=str,
                         required=True,
                         help="Name is empty!")
@@ -30,7 +30,7 @@ class AuthApi(Resource):
 
 class RegisterApi(Resource):
     parser = reqparse.RequestParser()
-    parser.add_argument("name",
+    parser.add_argument("username",
                         type=str,
                         required=True,
                         help="Name is empty!")
@@ -41,14 +41,14 @@ class RegisterApi(Resource):
 
     def post(self):
         parser = self.parser.parse_args()
-        new_user = User(name=parser["name"], password=parser["password"])
+        new_user = User(username=parser["username"], password=parser["password"])
         new_user.create()
         return new_user.id, 200
 
 
 class LoginApi(Resource):
     parser = reqparse.RequestParser()
-    parser.add_argument("name",
+    parser.add_argument("username",
                         required=True,
                         type=str)
     parser.add_argument("password",
@@ -57,7 +57,7 @@ class LoginApi(Resource):
 
     def post(self):
         received_args = self.parser.parse_args()
-        user = User.query.filter(User.name == received_args["name"]).first()
+        user = User.query.filter(User.username == received_args["username"]).first()
         if not user:
             return "User not found! ", 404
         if user and user.check_pass(received_args['password']):
