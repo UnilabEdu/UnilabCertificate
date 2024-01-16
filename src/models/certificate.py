@@ -7,3 +7,4 @@ class Certificate(BaseModel):
     username = db.Column(db.String)
     date = db.Column(db.Date)
     generate_date = db.Column(db.Date)
+    type = db.Column(db.String)
