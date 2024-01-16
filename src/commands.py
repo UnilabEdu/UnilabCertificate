@@ -25,6 +25,6 @@ def init_db():
     click.echo("Database creation in progress")
     db.drop_all()
     db.create_all()
-    test_user = User(username="TestUser",password="TestUser")
+    test_user = User(username="TestUser", password="TestUser")
     test_user.create()
     click.echo("Done!")
