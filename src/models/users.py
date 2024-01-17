@@ -8,11 +8,11 @@ class User(BaseModel):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    username = db.Column(db.String)
     password = db.Column(db.String)
 
-    def __init__(self, name, password):
-        self.name = name
+    def __init__(self, username, password):
+        self.username = username
         self.password = generate_password_hash(password)
 
     def check_pass(self, password):
