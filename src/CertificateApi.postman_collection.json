@@ -107,6 +107,40 @@
 				"header": []
 			},
 			"response": []
+		},
+		{
+			"name": "RefreshApi",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNjc3MjM2NSwianRpIjoiYmQ5YTZkMjctNjNmNi00MGYxLTgxM2UtNTYwNjRhNmYzOWE0IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjEsIm5iZiI6MTcwNjc3MjM2NSwiY3NyZiI6IjBjZGQ4Y2IxLWE3NjEtNGU2ZS05MWE5LTg0NGNlNWJiZDRhZSIsImV4cCI6MTcwOTM2NDM2NX0.Ny4m3sONeyxONWB8UMaIFUHq5csGtObkfxstB6qZTYQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/refresh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"refresh"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

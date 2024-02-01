@@ -13,22 +13,23 @@ from src.models import User
 @with_appcontext
 def api_test():
     # # api/login
-    # link = "http://127.0.0.1:5000/users_id"
-    # headers = {"Content-Type": "application/json"}
-    # body = {"username": 'TestUser',"password":"TestUser"}
+    link = "http://127.0.0.1:5000/api/login"
+    headers = {"Content-Type": "application/json"}
+    body = {"username": 'TestUser',"password":"TestUser"}
 
     # api/certificate
     # link = "http://127.0.0.1:5000/api/certificate"
     # headers = {"Content-Type": "application/json",
-    #            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNTUxOTMyMSwianRpIjoiMjk1NjNjNWYtZjQ0Yi00Nzg0LWIxMWUtYjk4NzUwYzdkOGFiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzA1NTE5MzIxLCJjc3JmIjoiNzE1OGJiNTQtZWUzZC00NWVlLTlkOTctMTkxMjMzY2Y3ZDY1IiwiZXhwIjoxNzA1NTIwMjIxfQ.4VU4xqXAltG8P98xVVykQI4JPeL2wn_H-2qm53Yi_ME"}
+    #            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNjc3MTY0OSwianRpIjoiMzI2MmRjNzctNjAyZS00YzVhLThkNjEtMjBiZjM0NTdjNTgyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzA2NzcxNjQ5LCJjc3JmIjoiNGVjNDAzZDgtZGM0ZS00NDhmLTgxZmMtMDZmOWZmNzYyMjJkIiwiZXhwIjoxNzA2NzcyNTQ5fQ.ECqwLCT9rbwBYHmSUHmCFfMapXi2uoG6P9P2XLpBQP4"}
     # body = {"username": 'TestUser', "date": '2004-12-01', "type": "TestType"}
 
 
-    link = "http://127.0.0.1:5000/api/get_certificate"
-    headers = {"Content-Type": "application/json"}
-    body = {"uuid": "0de8c984-c766-4ac3-ab0d-bc48fe711ce6"}
+    # link = "http://127.0.0.1:5000/api/refresh"
+    # headers = {"Content-Type": "application/json",
+    #            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNjc3MjA0NSwianRpIjoiOGE3YjEzNzgtMmQ1MC00ZjNhLThiZWYtNDNhYmRhODNjYjVmIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjEsIm5iZiI6MTcwNjc3MjA0NSwiY3NyZiI6IjUxYjEzNjQwLTcxZGItNDFjZS1hYzM4LTg0OWFmMTViOTU5NSIsImV4cCI6MTcwOTM2NDA0NX0.7S3fM7S8Pxz7FnZikTiI5Xt_R54ptjd5mca-WkLUvMU"}
+    # body = {}
 
-    received_response = requests.get(link, data=json.dumps(body), headers=headers)
+    received_response = requests.post(link, json=body, headers=headers)
     print(received_response.content)
 
 
