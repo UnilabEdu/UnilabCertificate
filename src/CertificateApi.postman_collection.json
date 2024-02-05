@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "ecfb673c-975c-4e53-a461-9d5cbb90e976",
+		"name": "CertificateApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32602822"
+	},
+	"item": [
+		{
+			"name": "CertificateApi",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNjM0ODMxNiwianRpIjoiOTRhOTc3ZTUtZmVjMS00MjFlLWE5MzktMTVkMGFmM2ZlYmRjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzA2MzQ4MzE2LCJjc3JmIjoiOTFkYTRmN2UtOTNmYS00YWQ1LTg1OGEtZjMwMTQ3MGQ2MDdiIiwiZXhwIjoxNzA2MzQ5MjE2fQ.bWnESzqnKqSNALkMz6k1JgZyQOFRWS_XK5DqGVVeouE",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/certificate?username=TestUser&date=2004-12-01&type=TestType",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"certificate"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "TestUser"
+						},
+						{
+							"key": "date",
+							"value": "2004-12-01"
+						},
+						{
+							"key": "type",
+							"value": "TestType"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserIdApi",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "LoginApi",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"TestUser\",\"password\":\"TestUser\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCertificateApi",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshApi",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNjc3MjM2NSwianRpIjoiYmQ5YTZkMjctNjNmNi00MGYxLTgxM2UtNTYwNjRhNmYzOWE0IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjEsIm5iZiI6MTcwNjc3MjM2NSwiY3NyZiI6IjBjZGQ4Y2IxLWE3NjEtNGU2ZS05MWE5LTg0NGNlNWJiZDRhZSIsImV4cCI6MTcwOTM2NDM2NX0.Ny4m3sONeyxONWB8UMaIFUHq5csGtObkfxstB6qZTYQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/refresh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

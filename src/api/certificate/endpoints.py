@@ -27,9 +27,6 @@ class CertificateApi(Resource):
                         type=str,
                         required=True,
                         help="Date is empty!")
-    parser.add_argument("uuid",
-                        type=str,
-                        default=lambda: str(uuid.uuid4()))
 
     @jwt_required()
     def post(self):
@@ -40,7 +37,7 @@ class CertificateApi(Resource):
                                       date=date_obj,
                                       generate_date=generate_date_obj,
                                       type=parser["type"],
-                                      uuid=parser["uuid"])
+                                      uuid=str(uuid.uuid4()))
         new_certificate.create()
         return new_certificate.uuid, 200
 
