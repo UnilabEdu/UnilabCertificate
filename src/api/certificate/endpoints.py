@@ -8,6 +8,8 @@ from flask_jwt_extended import jwt_required
 
 from src.models.certificate import Certificate
 
+from src.functions import certificate_2d
+
 
 class CertificateApi(Resource):
     parser = reqparse.RequestParser()
@@ -27,6 +29,10 @@ class CertificateApi(Resource):
                         type=str,
                         required=True,
                         help="Date is empty!")
+    parser.add_argument("subject",
+                        type=str,
+                        required=True,
+                        help="Date is empty!")
 
     @jwt_required()
     def post(self):
@@ -37,8 +43,11 @@ class CertificateApi(Resource):
                                       date=date_obj,
                                       generate_date=generate_date_obj,
                                       type=parser["type"],
-                                      uuid=str(uuid.uuid4()))
+                                      uuid=str(uuid.uuid4()),
+                                      subject = parser["subject"]
+                                      )
         new_certificate.create()
+        certificate_2d(new_certificate.username,new_certificate.type,new_certificate.subject,str(new_certificate.date))
         return new_certificate.uuid, 200
 
 
