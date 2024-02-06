@@ -47,7 +47,7 @@ class CertificateApi(Resource):
                                       subject = parser["subject"]
                                       )
         new_certificate.create()
-        certificate_2d(new_certificate.username,new_certificate.type,new_certificate.subject,str(new_certificate.date))
+        certificate_2d(new_certificate.username,new_certificate.type,new_certificate.subject,str(new_certificate.date)[0:4])
         return new_certificate.uuid, 200
 
 
