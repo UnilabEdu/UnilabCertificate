@@ -11,3 +11,4 @@ class Certificate(BaseModel):
     date = db.Column(db.Date)
     generate_date = db.Column(db.Date)
     type = db.Column(db.String)
+    subject = db.Column(db.String)
