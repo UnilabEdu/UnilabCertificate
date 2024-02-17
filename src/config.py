@@ -5,7 +5,7 @@ from os import path
 class Config:
     app = Flask(__name__)
     BASE_DIRECTORY = path.abspath(path.dirname(__file__))
-    IMAGES_PATH = path.join(BASE_DIRECTORY, "images")
+    IMAGES_PATH = path.join(BASE_DIRECTORY, "assets", "image")
 
     SECRET_KEY = "bcslwqerob.;1'1"
     JWT_SECRET_KEY = "qweqweqwh123123/;"

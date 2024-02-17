@@ -7,8 +7,15 @@ import uuid
 from flask_jwt_extended import jwt_required
 
 from src.models.certificate import Certificate
+from src.models.users import User
 
-from src.functions import certificate_2d
+from src.utils import certificate_2d
+
+from werkzeug.datastructures import FileStorage
+
+from src.config import Config
+
+from os import path
 
 
 class CertificateApi(Resource):
@@ -44,15 +51,17 @@ class CertificateApi(Resource):
                                       generate_date=generate_date_obj,
                                       type=parser["type"],
                                       uuid=str(uuid.uuid4()),
-                                      subject = parser["subject"]
+                                      subject=parser["subject"]
                                       )
         new_certificate.create()
-        certificate_2d(new_certificate.username,new_certificate.type,new_certificate.subject,str(new_certificate.date)[0:4])
+        certificate_2d(new_certificate.username, new_certificate.type, new_certificate.subject,
+                       str(new_certificate.date)[0:4])
         return new_certificate.uuid, 200
 
 
 class GetCertificateApi(Resource):
     parser = reqparse.RequestParser()
+
     parser.add_argument("uuid",
                         type=str,
                         required=True)
@@ -70,3 +79,34 @@ class GetCertificateApi(Resource):
             "uuid": certificate.uuid
         }
         return certificate_data, 200
+
+
+class SignatureApi(Resource):
+    parser = reqparse.RequestParser()
+
+    parser.add_argument("user_id",
+                        type=int,
+                        location="form",
+                        required=True,
+                        help='Id is empty')
+
+    parser.add_argument('picture',
+                        type=FileStorage,
+                        location='files',
+                        required=True,
+                        help="Picture is empty")
+
+    @jwt_required()
+    def post(self):
+        parser = self.parser.parse_args()
+        
+        user_id = parser["user_id"]
+        user = User.query.filter_by(id=user_id).first()
+
+        picture = parser['picture']
+        picture_name = str(uuid.uuid4())
+
+        user.signature = picture_name
+
+        picture_location = path.join(Config.BASE_DIRECTORY, "assets", "signatures", f'{picture_name}.png')
+        picture.save(picture_location)
