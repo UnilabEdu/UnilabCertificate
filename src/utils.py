@@ -6,7 +6,7 @@ def certificate_text(subject, course_type):
     return cert_text
 
 
-def certificate_2d(username, course_type, subject, date):
+def certificate_2d(username, course_type, subject, date,signature_path):
     image = Image.open('src/assets/images/Certificate_blank.png')
 
     draw = ImageDraw.Draw(image)
@@ -15,10 +15,10 @@ def certificate_2d(username, course_type, subject, date):
 
     font = ImageFont.truetype(font_path, 25)
 
-    sign = Image.open("src/assets/images/xelmowera.jpg")
+    sign = Image.open(signature_path)
     sign = sign.resize((200, 70))
 
-    sign2 = Image.open("src/assets/images/xelmowera.jpg")
+    sign2 = Image.open(signature_path)
     sign2 = sign.resize((200, 70))
 
     draw.text((585, 540), certificate_text(course_type, subject), fill=(0, 0, 0), font=font)
